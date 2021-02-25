@@ -14,6 +14,15 @@
   <div class="chat-container">
     <header class="chat-header">
       <h1>Invozone</h1>
+      <h3 id="currentUser"></h3>
+
+      <button id="editCurrentUser" class="btn">Edit</button>
+
+      <div id="changeCurrentUserName" style="display: none">
+        <input type="text" value="" id="currentUservalue">
+        <button class="btn" id="UpdateCurrentUser">update</button>
+      </div>
+
       <a href="index.html" class="btn">Leave Room</a>
     </header>
     <main class="chat-main">
@@ -32,12 +41,15 @@
         <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
         <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
       </form>
+      <p class="typing" style="color:white"></p>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
     integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
     crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
 </body>
 

@@ -3,7 +3,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
-const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users');
+const { userJoin, getCurrentUser, userLeave, getRoomUsers, updateUserName } = require('./utils/users');
 
 const app = express();
 const server = http.createServer(app);
@@ -53,6 +53,28 @@ io.on('connection', socket => {
             })
         }
     })
+    // for typing
+
+    socket.on('typing', (data) => {
+        const user = getCurrentUser(socket.id);
+        if (data.typing == true)
+            socket.broadcast.to(user.room).emit('display', data);
+        else
+            socket.broadcast.to(user.room).emit('display', data);
+    })
+
+    // Update User name
+    socket.on('updateUserName', (data) => {
+        console.log(socket);
+        const user = updateUserName(socket.id, data.updatedName, data.room);
+        // Third:  Send user and room information
+        io.to(user.room).emit('roomUser', {
+            room: user.room,
+            users: getRoomUsers(user.room)
+        })
+        socket.broadcast.to(user.room).emit('message', formatMessage(botname, `${user.username} change his name from ${data.currentName} to ${user.username}`));
+    })
+
 })
 
 const PORT = 3000 || process.env.PORT;
