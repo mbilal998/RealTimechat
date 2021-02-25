@@ -1,0 +1,28 @@
+{
+  "name": "realtimechat",
+  "version": "1.0.0",
+  "description": "Real Time chat for Invozone",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbilal998/RealTimechat.git"
+  },
+  "author": "Muhammad Bilal Khalid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mbilal998/RealTimechat/issues"
+  },
+  "homepage": "https://github.com/mbilal998/RealTimechat#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^3.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
