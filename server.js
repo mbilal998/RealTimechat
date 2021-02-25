@@ -65,7 +65,6 @@ io.on('connection', socket => {
 
     // Update User name
     socket.on('updateUserName', (data) => {
-        console.log(socket);
         const user = updateUserName(socket.id, data.updatedName, data.room);
         // Third:  Send user and room information
         io.to(user.room).emit('roomUser', {
